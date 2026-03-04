@@ -63,14 +63,18 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 py-24 lg:px-6 lg:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight lg:text-5xl">
-              The infrastructure that transforms ERP financial data into{" "}
-              <span className="text-accent">AI-ready intelligence.</span>
+              The infrastructure that transforms
+              <br className="hidden sm:block" /> ERP financial data
+              <br className="hidden sm:block" /> into AI-ready intelligence.
             </h1>
-            <p className="mb-10 text-lg text-primary-foreground/70 lg:text-xl">
-              PipeLedger turns ERP general ledger data into AI-ready, audit-grade
+            <p className="mb-4 text-lg text-primary-foreground/70 lg:text-xl">
+              PipeLedger transforms ERP general ledger data into AI-ready, audit-grade
               datasets with BigQuery row-level security, sensitive-data redaction,
               and human approvals. CFOs can safely serve financial truth to their
               organization, modern data platforms, and autonomous AI agents.
+            </p>
+            <p className="mb-10 text-sm text-primary-foreground/40">
+              Built on deterministic SQL transformations, BigQuery-native security, and governed AI delivery.
             </p>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
@@ -91,17 +95,11 @@ export default function LandingPage() {
       </section>
 
       {/* ── Narrative bridge ── */}
-      <section className="border-b border-border bg-muted/50 py-10">
+      <section className="border-b border-border bg-muted/50 py-16">
         <div className="mx-auto max-w-3xl px-4 text-center lg:px-6">
           <p className="text-base text-muted-foreground lg:text-lg">
-            Once the organization starts asking{" "}
-            <span className="font-medium text-foreground">
-              &ldquo;Can we just connect Claude Code to the general ledger?&rdquo;
-            </span>
-            , the CFO needs an answer that&rsquo;s safe.{" "}
-            <span className="font-medium text-foreground">
-              PipeLedger is that answer.
-            </span>
+            Once the organization starts asking &ldquo;Can we just connect Claude Code to the general ledger?&rdquo;,
+            the CFO needs an answer that is safe. PipeLedger is that answer.
           </p>
         </div>
       </section>
@@ -145,7 +143,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 lg:px-6">
           <div className="mb-12 text-center">
             <h2 className="mb-3 text-3xl font-bold tracking-tight lg:text-4xl">
-              Built for finance teams that need to trust AI.
+              Built for finance teams that must trust AI.
             </h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

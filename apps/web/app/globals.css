@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   PIPELEDGER AI — Design Token System
+   Primary:    #0B1F3A  (deep navy)
+   Accent:     #3B82F6  (blue)
+   Background: #FFFFFF
+   All colors use HSL for Tailwind compatibility.
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* --- Surface colors --- */
+    --background: 0 0% 100%;
+    --foreground: 215 50% 12%;
+    --card: 0 0% 99%;
+    --card-foreground: 215 50% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 50% 12%;
+    --muted: 215 20% 96%;
+    --muted-foreground: 215 16% 45%;
+
+    /* --- Interactive colors --- */
+    --primary: 215 73% 14%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 20% 92%;
+    --secondary-foreground: 215 50% 12%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* --- Border & input --- */
+    --border: 215 20% 89%;
+    --input: 215 20% 89%;
+    --ring: 217 91% 60%;
+
+    /* --- Pipeline status colors --- */
+    --status-queued: 215 20% 70%;
+    --status-running: 217 91% 60%;
+    --status-blocked: 38 92% 50%;
+    --status-succeeded: 142 71% 45%;
+    --status-failed: 0 84% 60%;
+    --status-cancelled: 215 16% 55%;
+
+    /* --- Variance indicators --- */
+    --variance-favorable: 142 71% 45%;
+    --variance-unfavorable: 0 84% 60%;
+
+    /* --- Confidence scores --- */
+    --confidence-high: 142 71% 45%;
+    --confidence-medium: 38 92% 50%;
+    --confidence-low: 0 84% 60%;
+
+    /* --- Typography --- */
+    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+    /* --- Border radius --- */
+    --radius: 0.5rem;
+
+    /* --- Shadows --- */
+    --shadow-sm: 0 1px 2px 0 rgb(11 31 58 / 0.06);
+    --shadow-md: 0 4px 12px 0 rgb(11 31 58 / 0.08);
+  }
+
+  .dark {
+    /* --- Surface colors --- */
+    --background: 215 50% 8%;
+    --foreground: 215 20% 92%;
+    --card: 215 45% 10%;
+    --card-foreground: 215 20% 92%;
+    --popover: 215 45% 10%;
+    --popover-foreground: 215 20% 92%;
+    --muted: 215 35% 15%;
+    --muted-foreground: 215 16% 60%;
+
+    /* --- Interactive colors --- */
+    --primary: 217 91% 60%;
+    --primary-foreground: 215 50% 8%;
+    --secondary: 215 35% 18%;
+    --secondary-foreground: 215 20% 92%;
+    --accent: 217 91% 65%;
+    --accent-foreground: 215 50% 8%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* --- Border & input --- */
+    --border: 215 35% 18%;
+    --input: 215 35% 18%;
+    --ring: 217 91% 65%;
+
+    /* --- Pipeline status colors (dark-adjusted) --- */
+    --status-queued: 215 20% 55%;
+    --status-running: 217 91% 65%;
+    --status-blocked: 38 85% 55%;
+    --status-succeeded: 142 60% 50%;
+    --status-failed: 0 75% 60%;
+    --status-cancelled: 215 16% 50%;
+
+    /* --- Shadows --- */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 12px 0 rgb(0 0 0 / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+  code, pre, kbd {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Pipeline stage pulse animation */
+@keyframes stage-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+.animate-stage-pulse {
+  animation: stage-pulse 1.5s ease-in-out infinite;
+}

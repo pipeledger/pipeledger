@@ -7,7 +7,6 @@ import {
   Network,
   CheckCircle2,
   Eye,
-  Lock,
   RotateCcw,
   TrendingUp,
   BookOpen,
@@ -63,19 +62,15 @@ export default function LandingPage() {
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-6xl px-4 py-24 lg:px-6 lg:py-32">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              <CheckCircle2 className="h-3 w-3" />
-              GL Intelligence Platform · Private Beta
-            </div>
-            <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight lg:text-6xl">
-              Share financial truth—
-              <span className="text-accent">without leaking it.</span>
+            <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight lg:text-5xl">
+              The infrastructure that transforms ERP financial data into{" "}
+              <span className="text-accent">AI-ready intelligence.</span>
             </h1>
             <p className="mb-10 text-lg text-primary-foreground/70 lg:text-xl">
               PipeLedger turns ERP general ledger data into AI-ready, audit-grade
               datasets with BigQuery row-level security, sensitive-data redaction,
-              and human approvals. CFOs can safely serve the entire organization,
-              modern data platforms, and autonomous AI agents.
+              and human approvals. CFOs can safely serve financial truth to their
+              organization, modern data platforms, and autonomous AI agents.
             </p>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
@@ -101,7 +96,7 @@ export default function LandingPage() {
           <p className="text-base text-muted-foreground lg:text-lg">
             Once the organization starts asking{" "}
             <span className="font-medium text-foreground">
-              &ldquo;Can we just connect Claude to the GL?&rdquo;
+              &ldquo;Can we just connect Claude Code to the general ledger?&rdquo;
             </span>
             , the CFO needs an answer that&rsquo;s safe.{" "}
             <span className="font-medium text-foreground">
@@ -119,7 +114,7 @@ export default function LandingPage() {
               How it works
             </h2>
             <p className="mb-1 text-base text-muted-foreground">
-              Three stages from raw ERP to governed AI delivery.
+              Three stages from raw ERP data to governed AI delivery.
             </p>
             <p className="text-sm font-semibold text-accent">
               CFO-approved sharing, at scale.
@@ -145,40 +140,15 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 3 Pillars ── */}
+      {/* ── Features ── */}
       <section id="features" className="bg-muted py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 lg:px-6">
           <div className="mb-12 text-center">
             <h2 className="mb-3 text-3xl font-bold tracking-tight lg:text-4xl">
-              The infrastructure that transforms ERP financial data
-              <br className="hidden lg:block" /> into AI-ready intelligence.
+              Built for finance teams that need to trust AI.
             </h2>
           </div>
-          <div className="grid gap-8 lg:grid-cols-3">
-            {PILLARS.map((pillar) => (
-              <div
-                key={pillar.title}
-                className="rounded-xl border border-border bg-card p-6 shadow-sm"
-              >
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <pillar.icon className="h-5 w-5" />
-                </div>
-                <h3 className="mb-1 text-base font-semibold">{pillar.title}</h3>
-                <p className="mb-5 text-xs text-accent font-medium">{pillar.tagline}</p>
-                <ul className="space-y-3">
-                  {pillar.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent/60" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* Feature cards */}
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
               <div
                 key={f.title}
@@ -310,38 +280,6 @@ const STEPS = [
   },
 ];
 
-const PILLARS = [
-  {
-    icon: CheckCircle2,
-    title: "Trust the numbers",
-    tagline: "Audit-grade from the start.",
-    points: [
-      "Deterministic GL transformations (dbt in BigQuery)",
-      "Reconciliation + control totals — debits always equal credits",
-      "Full lineage from mart back to raw ERP fields",
-    ],
-  },
-  {
-    icon: Lock,
-    title: "Control who sees what",
-    tagline: "Policies enforced at the data layer.",
-    points: [
-      "BigQuery row-level security — API bugs can't leak restricted rows",
-      "Sensitive categories redacted: exec comp, legal, M&A, board items",
-      '"View as role" preview before any delivery is approved',
-    ],
-  },
-  {
-    icon: Network,
-    title: "Share everywhere",
-    tagline: "Without becoming the bottleneck.",
-    points: [
-      "MCP server for Claude + agents, REST API, and file exports",
-      "Dual-checkpoint approvals (input scope + output visibility)",
-      "Audit trail of every access, delivery, and revocation",
-    ],
-  },
-];
 
 const FEATURES = [
   {

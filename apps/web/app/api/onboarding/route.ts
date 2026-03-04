@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient, createAdminClient } from "@/lib/supabase/server";
+import { initOrgDatasets } from "@/lib/bigquery/datasets";
 
 const VALID_FRAMEWORKS   = ["US GAAP", "IFRS", "Local GAAP", "Other"] as const;
 const VALID_RF_VALUES    = ["single_entity", "multi_entity_domestic", "multi_entity_international"] as const;
@@ -95,6 +96,12 @@ export async function POST(request: NextRequest) {
       await admin.from("organizations").delete().eq("id", org.id);
       return NextResponse.json({ error: "Failed to set up membership" }, { status: 500 });
     }
+
+    // Provision org-scoped BigQuery datasets. Non-blocking — a failure here does not
+    // roll back the org creation; datasets will be recreated on first pipeline run.
+    initOrgDatasets(org.id).catch((err) =>
+      console.error("BigQuery dataset init failed for org", org.id, err),
+    );
 
     return NextResponse.json({ org_id: org.id });
   } catch (err) {

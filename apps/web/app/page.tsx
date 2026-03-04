@@ -2,13 +2,16 @@ import Link from "next/link";
 import {
   Zap,
   GitFork,
-  Bot,
-  Database,
   ShieldCheck,
-  Users,
   FileBarChart,
   Network,
   CheckCircle2,
+  Eye,
+  Lock,
+  RotateCcw,
+  TrendingUp,
+  BookOpen,
+  AlertCircle,
 } from "lucide-react";
 
 const APP_URL = "https://app.pipeledger.ai";
@@ -65,55 +68,74 @@ export default function LandingPage() {
               GL Intelligence Platform · Private Beta
             </div>
             <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight lg:text-6xl">
-              Your ERP data,{" "}
-              <span className="text-accent">ready for AI</span>
+              Share financial truth—
+              <span className="text-accent">without leaking it.</span>
             </h1>
             <p className="mb-10 text-lg text-primary-foreground/70 lg:text-xl">
-              PipeLedger extracts general ledger data from your ERP, transforms
-              it through auditable dbt pipelines, and delivers it to your AI
-              assistant via MCP — so your CFO can finally ask questions and
-              trust the answers.
+              PipeLedger turns ERP general ledger data into AI-ready, audit-grade
+              datasets with BigQuery row-level security, sensitive-data redaction,
+              and human approvals. CFOs can safely serve the entire organization,
+              modern data platforms, and autonomous AI agents.
             </p>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
                 href={`${APP_URL}/login`}
                 className="w-full rounded-md bg-accent px-6 py-3 text-sm font-semibold text-white shadow-md transition-opacity hover:opacity-90 sm:w-auto"
               >
-                Get early access
+                Request private beta
               </Link>
               <a
                 href="#how-it-works"
                 className="w-full rounded-md border border-primary-foreground/20 px-6 py-3 text-sm font-medium text-primary-foreground/80 transition-colors hover:border-primary-foreground/40 hover:text-primary-foreground sm:w-auto"
               >
-                See how it works
+                See how governance works
               </a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ── Narrative bridge ── */}
+      <section className="border-b border-border bg-muted/50 py-10">
+        <div className="mx-auto max-w-3xl px-4 text-center lg:px-6">
+          <p className="text-base text-muted-foreground lg:text-lg">
+            Once the organization starts asking{" "}
+            <span className="font-medium text-foreground">
+              &ldquo;Can we just connect Claude to the GL?&rdquo;
+            </span>
+            , the CFO needs an answer that&rsquo;s safe.{" "}
+            <span className="font-medium text-foreground">
+              PipeLedger is that answer.
+            </span>
+          </p>
+        </div>
+      </section>
+
       {/* ── How it works ── */}
       <section id="how-it-works" className="bg-background py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 lg:px-6">
-          <div className="mb-12 text-center">
+          <div className="mb-3 text-center">
             <h2 className="mb-3 text-3xl font-bold tracking-tight lg:text-4xl">
               How it works
             </h2>
-            <p className="text-base text-muted-foreground">
-              Three steps from raw GL data to AI-ready intelligence.
+            <p className="mb-1 text-base text-muted-foreground">
+              Three stages from raw ERP to governed AI delivery.
+            </p>
+            <p className="text-sm font-semibold text-accent">
+              CFO-approved sharing, at scale.
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
             {STEPS.map((step, i) => (
-              <div key={step.title} className="relative text-center">
+              <div key={step.title} className="relative">
                 {i < STEPS.length - 1 && (
                   <div className="absolute right-0 top-7 hidden h-px w-1/2 translate-x-1/2 bg-border md:block" />
                 )}
-                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
                   <step.icon className="h-6 w-6" />
                 </div>
                 <div className="mb-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Step {i + 1}
+                  Step {i + 1} — {step.subtitle}
                 </div>
                 <h3 className="mb-2 text-lg font-semibold">{step.title}</h3>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
@@ -123,28 +145,50 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Features ── */}
+      {/* ── 3 Pillars ── */}
       <section id="features" className="bg-muted py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 lg:px-6">
           <div className="mb-12 text-center">
             <h2 className="mb-3 text-3xl font-bold tracking-tight lg:text-4xl">
-              Built for finance teams
+              The infrastructure that transforms ERP financial data
+              <br className="hidden lg:block" /> into AI-ready intelligence.
             </h2>
-            <p className="text-base text-muted-foreground">
-              Everything you need to trust the numbers your AI is working with.
-            </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 lg:grid-cols-3">
+            {PILLARS.map((pillar) => (
+              <div
+                key={pillar.title}
+                className="rounded-xl border border-border bg-card p-6 shadow-sm"
+              >
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <pillar.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mb-1 text-base font-semibold">{pillar.title}</h3>
+                <p className="mb-5 text-xs text-accent font-medium">{pillar.tagline}</p>
+                <ul className="space-y-3">
+                  {pillar.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent/60" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Feature cards */}
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
               <div
                 key={f.title}
-                className="rounded-xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
+                className="rounded-xl border border-border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                  <f.icon className="h-5 w-5" />
+                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                  <f.icon className="h-4 w-4" />
                 </div>
-                <h3 className="mb-1.5 text-sm font-semibold">{f.title}</h3>
-                <p className="text-sm text-muted-foreground">{f.description}</p>
+                <h3 className="mb-1 text-sm font-semibold">{f.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">{f.description}</p>
               </div>
             ))}
           </div>
@@ -156,14 +200,11 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 lg:px-6">
           <div className="mb-12 text-center">
             <h2 className="mb-3 text-3xl font-bold tracking-tight lg:text-4xl">
-              Simple, usage-based pricing
+              Predictable base. Scales with AI adoption.
             </h2>
-            <p className="text-base text-muted-foreground">
-              Pay for what you use. No seat licenses. No surprises.
-              <br />
-              <span className="font-medium text-accent">
-                Pricing launches with general availability.
-              </span>
+            <p className="mx-auto max-w-xl text-base text-muted-foreground">
+              A platform subscription plus usage that grows as humans and AI
+              agents query financial data — without adding finance headcount.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -207,7 +248,7 @@ export default function LandingPage() {
               Join the private beta
             </Link>
             <p className="mt-3 text-xs text-muted-foreground">
-              No credit card required. We will reach out before charging anything.
+              No surprises: real-time usage dashboard + approvals before delivery.
             </p>
           </div>
         </div>
@@ -248,78 +289,114 @@ export default function LandingPage() {
 const STEPS = [
   {
     icon: Zap,
+    subtitle: "Extract, don't export",
     title: "Connect your ERP",
     description:
-      "Plug in NetSuite, QuickBooks, and more with guided setup wizards. Credentials are encrypted and never leave your environment.",
+      "Typed connectors pull GL, dimensions, chart of accounts, and budgets. No messy CSV exports. Scope is reviewed at the input checkpoint before anything moves.",
   },
   {
     icon: GitFork,
-    title: "Transform with dbt",
+    subtitle: "Make it machine-legible",
+    title: "Deterministic dbt transformations",
     description:
-      "Your GL data runs through auditable dbt pipelines on BigQuery. Every transformation is deterministic, versioned, and tested.",
+      "Balance movements, taxonomy mapping, currency adjustments, period alignment, and dimensional enrichment — versioned, tested, and traceable from mart back to raw ERP fields.",
   },
   {
-    icon: Bot,
-    title: "Deliver to AI",
+    icon: ShieldCheck,
+    subtitle: "Your governance wedge",
+    title: "Deliver with enforced access controls",
     description:
-      "An MCP server exposes mart tables to Claude, GPT-4, and any compatible assistant. Ask questions. Get auditable answers.",
+      "BigQuery native row-level policies, role views, and sensitive-data redaction. Nothing reaches MCP, API, or export files until an approver confirms what each role will see.",
+  },
+];
+
+const PILLARS = [
+  {
+    icon: CheckCircle2,
+    title: "Trust the numbers",
+    tagline: "Audit-grade from the start.",
+    points: [
+      "Deterministic GL transformations (dbt in BigQuery)",
+      "Reconciliation + control totals — debits always equal credits",
+      "Full lineage from mart back to raw ERP fields",
+    ],
+  },
+  {
+    icon: Lock,
+    title: "Control who sees what",
+    tagline: "Policies enforced at the data layer.",
+    points: [
+      "BigQuery row-level security — API bugs can't leak restricted rows",
+      "Sensitive categories redacted: exec comp, legal, M&A, board items",
+      '"View as role" preview before any delivery is approved',
+    ],
+  },
+  {
+    icon: Network,
+    title: "Share everywhere",
+    tagline: "Without becoming the bottleneck.",
+    points: [
+      "MCP server for Claude + agents, REST API, and file exports",
+      "Dual-checkpoint approvals (input scope + output visibility)",
+      "Audit trail of every access, delivery, and revocation",
+    ],
   },
 ];
 
 const FEATURES = [
   {
-    icon: Zap,
-    title: "ERP Connectors",
-    description:
-      "Native connectors for NetSuite, QuickBooks, and Xero. Scheduled extraction with incremental syncs.",
-  },
-  {
-    icon: GitFork,
-    title: "dbt Transformations",
-    description:
-      "Staging → intermediate → mart. Fully layered, fully tested. Debits always equal credits.",
-  },
-  {
     icon: FileBarChart,
-    title: "Financial Taxonomy",
+    title: "AI-Safe General Ledger",
     description:
-      "US GAAP and IFRS taxonomy mapping built in. Chart of accounts normalised automatically.",
-  },
-  {
-    icon: Network,
-    title: "MCP + REST Delivery",
-    description:
-      "Serve financial data to AI assistants via MCP or any system via REST. Signed URLs, no raw DB access.",
+      "GL movements, dimensions, and taxonomy transformed into machine-legible, queryable tables.",
   },
   {
     icon: ShieldCheck,
-    title: "Audit Trail",
+    title: "BigQuery Native Row-Level Security",
     description:
-      "Every pipeline run, approval, and delivery is logged immutably. Full lineage from ERP to AI.",
+      "Policies enforced at the data layer — API bugs can't leak restricted rows.",
   },
   {
-    icon: Users,
-    title: "Role-Based Access",
+    icon: AlertCircle,
+    title: "Sensitive Data Redaction",
     description:
-      "Owner, Admin, Analyst, and Viewer roles. Sensitive accounts restricted at the row level.",
+      "Automatically exclude executive comp, legal, M&A, and board-level categories by policy.",
   },
   {
-    icon: Database,
-    title: "BigQuery Native",
+    icon: Eye,
+    title: "Dual Approval Checkpoints",
     description:
-      "Data stays in your GCP project. PipeLedger never stores your GL data on its own servers.",
+      "Nothing reaches AI until a human approves scope and role-based visibility.",
   },
   {
-    icon: CheckCircle2,
-    title: "Human Checkpoints",
+    icon: GitFork,
+    title: "Deterministic dbt Transformations",
     description:
-      "Input and output review gates before any data is delivered. Humans stay in the loop.",
+      "Versioned, tested, and auditable — staging → intermediate → security → marts.",
   },
   {
-    icon: Bot,
-    title: "AI Commentary",
+    icon: TrendingUp,
+    title: "Budget vs Actual, Pre-Joined",
     description:
-      "LLM-generated variance commentary and NL descriptions — advisory only, downstream of the mart.",
+      "Variance-ready marts so CFOs can ask \"Where are we off plan?\" instantly.",
+  },
+  {
+    icon: BookOpen,
+    title: "Context Enrichment",
+    description:
+      "Turn codes into meaning: accounts + dimensions + documents → readable finance context.",
+  },
+  {
+    icon: Network,
+    title: "MCP + API Delivery",
+    description:
+      "Serve governed finance datasets to Claude and internal tools without raw DB access.",
+  },
+  {
+    icon: RotateCcw,
+    title: "Audit Trail & Revocation",
+    description:
+      "Every extract, approval, delivery, and access event logged. Revoke deliveries instantly.",
   },
 ];
 
